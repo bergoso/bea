@@ -1,6 +1,10 @@
-- name: Checkout
-  uses: actions/checkout@v2.4.2
-
+# Create a folder under the drive root
+mkdir \actions-runner ; cd \actions-runner
+# Download the latest runner package
+Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.285.0/actions-runner-win-x64-2.285.0.zip -OutFile actions-runner-win-x64-2.285.0.zip
+# Extract the installer
+Add-Type -AssemblyName System.IO.Compression.FileSystem ;
+[System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD\actions-runner-win-x64-2.285.0.zip", "$PWD")
 8/3/20 4:15 - Los mensajes y las llamadas están cifrados de extremo a extremo. Nadie fuera de este chat, ni siquiera WhatsApp, puede leerlos ni escucharlos. Toca para obtener más información.
 8/3/20 4:15 - Adrian Pitu: Fichada
 8/3/20 4:15 - Adrian Pitu: 😏
