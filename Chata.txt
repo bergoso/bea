@@ -1,3 +1,6 @@
+- name: Checkout
+  uses: actions/checkout@v2.4.2
+
 8/3/20 4:15 - Los mensajes y las llamadas están cifrados de extremo a extremo. Nadie fuera de este chat, ni siquiera WhatsApp, puede leerlos ni escucharlos. Toca para obtener más información.
 8/3/20 4:15 - Adrian Pitu: Fichada
 8/3/20 4:15 - Adrian Pitu: 😏
