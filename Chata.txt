@@ -1,10 +1,56 @@
-# Create a folder under the drive root
-mkdir \actions-runner ; cd \actions-runner
-# Download the latest runner package
-Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.285.0/actions-runner-win-x64-2.285.0.zip -OutFile actions-runner-win-x64-2.285.0.zip
-# Extract the installer
-Add-Type -AssemblyName System.IO.Compression.FileSystem ;
-[System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD\actions-runner-win-x64-2.285.0.zip", "$PWD")
+- nombre: Ejecutar Parasoft dotTEST
+  # Puede fijar la confirmación exacta o la versión.
+  # usos: parasoft/run-dottest-action@79dcd265dfb8934d60521c672b9d0d97b141af20
+  usos: parasoft/run-dottest-action@1.2.3
+  con:
+    # Ruta al directorio de trabajo.
+    workingDir: # opcional, el valor predeterminado es ${{ github.workspace }}
+    # Ruta al directorio de instalación de dotTEST, que contiene dottestcli.exe. Si no se especifica, se buscará dottestcli.exe en PATH.
+    installDir: # opcional
+    # Camino a la solución a analizar. Especifique una lista de rutas separadas por punto y coma para analizar muchas soluciones. Admite comodines de estilo ANT.
+    solución: # opcional, por defecto es .\*.sln
+    # Camino al proyecto a analizar cuando no se proporciona solución. Especifique una lista de rutas separadas por punto y coma para analizar muchos proyectos. Admite comodines de estilo ANT.
+    proyecto: # opcional
+    # Ruta completa al directorio del sitio web que se analizará cuando no se proporcione ninguna solución.
+    Sitio web (opcional
+    # URL de la configuración de prueba que se utilizará para el análisis.
+    testConfig: # opcional, el valor predeterminado es buildin://Reglas de .NET Core recomendadas
+    # Ruta relativa a la solución a un proyecto en una solución, un directorio de archivos en un proyecto o un archivo. Utilice una lista separada por punto y coma para especificar varias rutas.
+    recurso: # opcional
+    # Rutas del sistema de archivos a archivos para incluir en el análisis. Admite comodines de estilo ANT. Si no se especifica, se analizan todos los archivos. Utilice una lista separada por punto y coma para especificar varias rutas.
+    incluir: # opcional
+    # Rutas del sistema de archivos a archivos para excluir del análisis. Admite comodines de estilo ANT. Utilice una lista separada por punto y coma para especificar varias rutas.
+    excluir: # opcional
+    # Ruta a ensamblajes adicionales requeridos para resolver dependencias. Especifique una lista de rutas separadas por punto y coma para proporcionar muchas referencias. Admite comodines de estilo ANT.
+    referencia: # opcional
+    # Ruta al directorio donde se creará el informe.
+    reportDir: # opcional, el valor predeterminado es ${{ github.workspace }}/.dottest/report/${{ github.run_number }}
+    # Publica el informe en DTP.
+    publicar: # opcional
+    # Ruta a un archivo de configuración. Utilice una lista separada por punto y coma para especificar varias rutas.
+    ajustes: # opcional
+    # Un ajuste de configuración único en el formato "clave=valor". Utilice una lista separada por punto y coma para especificar varias rutas.
+    propiedad: # opcional
+    # Deshabilita la compilación de las soluciones o proyectos probados.
+    noconstruir: # opcional
+    # Ejecuta pruebas que están etiquetadas con tipos/ID de seguimiento de problemas específicos.
+    testTagFilter: # opcional
+    # Configuración de la solución, por ejemplo, "Depuración".
+    solutionConfig: # opcional
+    # Configuración del proyecto, por ejemplo, "Depuración".
+    projectConfig: # opcional
+    # Plataforma de destino de la configuración de la solución (p. ej., "Cualquier CPU") o configuración del proyecto (p. ej., "Cualquier CPU").
+    plataforma de destino: # opcional
+    # Ruta a la ubicación donde se guarda la salida de la consola.
+    fuera: # opcional
+    # Falla el comando con el código de salida 2 o 4 si se informa algún hallazgo. Se recomienda usarlo con continue-on-error: true.
+    fallar: # opcional
+    # Enumera todas las configuraciones que se utilizan actualmente.
+    configuración del espectáculo: # opcional
+    # 'Modo para la generación de informes de GitHub (SARIF). Puedes usar:
+    # - "heredado" - para dotTEST 2020.2 o anterior
+    # - "incorporado" - para dotTEST 2021.1 o posterior (predeterminado)
+    sarifMode: # opcional, por defecto está integrado
 8/3/20 4:15 - Los mensajes y las llamadas están cifrados de extremo a extremo. Nadie fuera de este chat, ni siquiera WhatsApp, puede leerlos ni escucharlos. Toca para obtener más información.
 8/3/20 4:15 - Adrian Pitu: Fichada
 8/3/20 4:15 - Adrian Pitu: 😏
